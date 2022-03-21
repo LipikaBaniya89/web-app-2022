@@ -15,8 +15,13 @@ var customerRouter = require('./routes/customers');
 var quotationRouter = require('./routes/quotation');
 
 var app = express();
-
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "public", "react-quotation"))); 
+app.get("/react-quotation/*", function (req, res) { 
+  res.sendFile(path.join(__dirname, "public", "react-quotation", "index.html")); 
+
+}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
